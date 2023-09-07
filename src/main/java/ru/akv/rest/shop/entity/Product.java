@@ -21,7 +21,7 @@ public class Product {
 
     private String position;
 
-    private String nane;
+    private String name;
 
     private String type;
 
