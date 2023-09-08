@@ -27,6 +27,7 @@ public class ShowcaseService {
         showcaseRepository.save(showcase);
     }
 
+//filter
     public List<Showcase> filterByAddress(String address){
         return showcaseRepository.findAllByAddress(address);
     }

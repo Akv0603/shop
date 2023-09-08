@@ -2,14 +2,12 @@ package ru.akv.rest.shop.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import javafx.beans.property.ListProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.akv.rest.shop.entity.Product;
 import ru.akv.rest.shop.services.ProductService;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -39,7 +37,6 @@ public class ProductController {
         }
 
         if(p1 != null && p2 != null) {
-//            if(p1.compareTo(p2) > 0) throw new Exception("Введите верный диапазон цен.");
             return productService.filterByPriceBetween(showcaseId, p1, p2);
         }
         return productService.getProductByShowcase(showcaseId);

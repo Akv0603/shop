@@ -27,14 +27,14 @@ public class ShowcaseController {
     }
 
     @GetMapping("/filter")
-    @Operation(summary = "Метод для фильтра витрин по типу или по адресу или по дате создания или по дате актуализации." +
+    @Operation(summary = "Метод для фильтра витрин по типу, или по адресу, или по дате создания, или по дате актуализации." +
             "В противном случае вернет все витрины.")
     public List<Showcase> filterShowcase(
             @RequestParam(required = false) String type,
             @RequestParam(required = false) String address,
             @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate createDateFirst,
             @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate createDateLast,
-            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate lastDatefirst,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate lastDateFirst,
             @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate lastDateLast
             ){
 
@@ -51,9 +51,9 @@ public class ShowcaseController {
             return showcaseService.filterByCreateDateBetween(createDateFirst, createDateLast);
         }
 
-        if(lastDatefirst != null && lastDateLast != null){
-            if(lastDateLast.isBefore(lastDatefirst)) throw new DateTimeException("Введите даты корректно.");
-            return showcaseService.filterByLastDateBetween(lastDatefirst, lastDateLast);
+        if(lastDateFirst != null && lastDateLast != null){
+            if(lastDateLast.isBefore(lastDateFirst)) throw new DateTimeException("Введите даты корректно.");
+            return showcaseService.filterByLastDateBetween(lastDateFirst, lastDateLast);
         }
         return showcaseService.getAll();
     }
