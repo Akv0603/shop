@@ -13,7 +13,16 @@ public class ShowcaseService {
     @Autowired
     private ShowcaseRepository showcaseRepository;
 
+
     public List<Showcase> getAll(){
         return showcaseRepository.findAll();
+    }
+
+    public void deleteShowcase(Integer showcaseId){
+        showcaseRepository.deleteById(showcaseId);
+    }
+
+    public void saveShowcase(Showcase showcase){
+        showcaseRepository.save(showcase);
     }
 }

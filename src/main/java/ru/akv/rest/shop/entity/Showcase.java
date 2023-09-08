@@ -1,5 +1,6 @@
 package ru.akv.rest.shop.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,9 +16,12 @@ public class Showcase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     private String name;
+
+    private String address;
 
     private String type;
 
@@ -28,5 +32,7 @@ public class Showcase {
     private LocalDate lastDate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "showcase")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private List<Product> productList;
+
 }
