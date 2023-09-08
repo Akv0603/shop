@@ -1,24 +1,25 @@
-#### ТЕСТОВОЕ Java REST-сервис для хранения данных о витринах товаров.
-#### Для запуска нужно:
-
-Java 8+, Maven 3+, PostgreSql 14, swagger-ui/Postman
-
+#### ТЕСТОВОЕ Java REST-сервис для хранения данных о витринах товаров в магазинах.
 <br>
 
+**Для запуска нужно:**
+
+Java 8+, Maven 3+, PostgreSql 14, swagger-ui/Postman
+- Создать в postgreSQL базу данных **shop** 
+- Данные профиля по умолчанию root/root. В application.properties можно изменить на свои.
+
+
 #### Запуск через IDE:
-- Создать базу данных **shop** (pgAdmin4)
 
 - В IDE:
 
- Подтянуть зависимости из pom-файла и
+ Подтянуть зависимости из pom-файла и:
 ````
 Run class DeviceListApplication
 ````
 
 #### Запуск из командной строки:
-- Создать базу данных **shop** (pgAdmin4)
 
-- Старт из папки проекта командой:
+- В папке проекта запустить окно команд и:
 
 ````
 mvn spring-boot:run 
@@ -28,3 +29,17 @@ mvn spring-boot:run
 
 http://localhost:8080/swagger-ui.html
 
+##### Общий вид с кратким описанием методов:
+![](images/test1.jpg)
+
+Пример создания новой витрины:
+
+![](images/test2.jpg)
+![](images/test3.jpg)
+
+Пример фильтрации:
+
+![](images/test6.jpg)
+
+В диапазоне цен в пределах одной витрины:
+![](images/test7.jpg)
