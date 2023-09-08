@@ -8,6 +8,7 @@ import ru.akv.rest.shop.exceptions.ShowcaseNotFoundException;
 import ru.akv.rest.shop.repository.ProductRepository;
 import ru.akv.rest.shop.repository.ShowcaseRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -19,6 +20,15 @@ public class ProductService {
     @Autowired
     private ShowcaseRepository showcaseRepository;
 
+    public List<Product> getAll(){
+        return productRepository.findAll();
+    }
+
+    public List<Product> getProductByShowcase(Integer showcaseId){
+        return showcaseRepository.findById(showcaseId).orElseThrow(() -> new ShowcaseNotFoundException(showcaseId))
+                .getProductList();
+    }
+
     public Product saveProduct(Integer showcaseId, Product product){
         Showcase showcase = showcaseRepository.findById(showcaseId).orElseThrow(() -> new ShowcaseNotFoundException(showcaseId));
         product.setShowcase(showcase);
@@ -27,5 +37,13 @@ public class ProductService {
 
     public void deleteProduct(Integer productId){
         productRepository.deleteById(productId);
+    }
+
+    public List<Product> filterProductByType(String type){
+        return  productRepository.findAllByType(type);
+    }
+
+    public List<Product> filterByPriceBetween(Integer id, BigDecimal p1, BigDecimal p2){
+        return productRepository.findAllByPriceBetweenByShowcaseId(id, p1, p2);
     }
 }
